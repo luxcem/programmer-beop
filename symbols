@@ -1,4 +1,4 @@
-// -- start programmer-beop --
+// -- start programmer_beop --
 // Programmer Béop
 // Pr-Béop
 // Ergonomic layout derived from Bépo and Béop (beop.free.fr)
@@ -93,4 +93,4 @@ xkb_symbols "programmer_beop" {
     modifier_map Mod5 { <LALT>, <RALT> };
 };
 
-// -- end programmer-beop --
+// -- end programmer_beop --
