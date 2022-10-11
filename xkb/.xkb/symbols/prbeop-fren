@@ -1,0 +1,86 @@
+// Programmer Béop French-English edition
+//
+// Pr-Béop-Fr-En
+// Ergonomic layout derived from Bépo and Béop (beop.free.fr)
+// This version focus on french - english char map and dismiss various
+//  characters
+
+partial alphanumeric_keys modifier_keys
+xkb_symbols "prbeop-fren" {
+
+    include "level3(alt_switch)"
+    include "keypad(oss)"
+
+    name[Group1]= "French (Pr-Beop-Fr-En, ergonomic, Programmer Béop Fr En)";
+
+    key <TLDE> { repeat = no, type[group1] = "ONE_LEVEL"   , [ Multi_key ] }; // Compose
+    key <AE01> { type[group1] = "FOUR_LEVEL"               , [ ampersand, 1, emdash, endash ] }; // & 1 cadratin demi-cadratin
+    key <AE02> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ guillemotleft, 2, U2E2E, leftdoublequotemark ] }; // « 2 ؟ “
+    key <AE03> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ guillemotright, 3, U203D,rightdoublequotemark ] }; // » 3 ‽ ”
+    key <AE04> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ apostrophe, 4, U2248, twosuperior ] }; // ' 4 ≈ ²
+    key <AE05> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ quotedbl , 5, ssharp, U1E9E] }; // " 5 ß ẞ
+    key <AE06> { type[group1] = "FOUR_LEVEL"               , [ at, 6, asciicircum, doublelowquotemark ] }; // @ 6 ^ „
+    key <AE07> { type[group1] = "FOUR_LEVEL"               , [ plus, 7, plusminus, notsign ] }; // + 7 ± ¬
+    key <AE08> { type[group1] = "FOUR_LEVEL"               , [ minus, 8, U2212, U2011] }; // - 8 − ‑ (non breaking hyphen)
+    key <AE09> { type[group1] = "FOUR_LEVEL"               , [ slash, 9, division, onehalf ] }; // / 9 ÷ ½
+    key <AE10> { type[group1] = "FOUR_LEVEL"               , [ asterisk, 0, multiply, onequarter ] }; // * 0 × ¼
+    key <AE11> { type[group1] = "FOUR_LEVEL"               , [ equal, degree, notequal, minutes ] }; // = ° ≠ ′
+    key <AE12> { type[group1] = "FOUR_LEVEL"               , [ numbersign, percent, U2030, seconds ] }; // # % ‰ ″
+
+    key <AD01> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ b, B, bar, brokenbar ] }; // b B | ¦
+    key <AD02> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ eacute, Eacute, dead_acute, U2203 ] }; // é É ´ it_exist
+    key <AD03> { type[group1] = "FOUR_LEVEL_ALPHABETIC"    , [ o, O, oe, OE ] }; // o O œ Œ
+    key <AD04> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ p, P, section, paragraph] }; // p P § ¶
+    key <AD05> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ egrave, Egrave, dead_grave, grave ] }; // è È ` `
+    key <AD06> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ w, W, dead_circumflex, U26A0 ] }; // w W ^ warning_sign
+    key <AD07> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ v, V, dead_caron, U2200 ] }; // v V ˇ for_all
+    key <AD08> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ d, D, dollar, dead_currency ] }; // d D $ ¤
+    key <AD09> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ l, L, asterisk, slash ] }; // l L * /
+    key <AD10> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ j, J, U0133, U0132 ] }; // j J ĳ Ĳ
+    key <AD11> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ z, Z, schwa, SCHWA ] }; // z Z ə Ə
+    key <AD12> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ ecircumflex, Ecircumflex, dead_circumflex, U202F ] }; //  ê Ê ^ espace fine insécable
+
+    key <AC01> { type[group1] = "FOUR_LEVEL_ALPHABETIC"    , [ a, A, ae, AE ] }; // a A æ Æ
+    key <AC02> { type[group1] = "FOUR_LEVEL_ALPHABETIC"    , [ u, U, ugrave, Ugrave ] }; // u U ù Ù
+    key <AC03> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ e, E, parenleft, EuroSign ] }; // e E ( €
+    key <AC04> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ i, I, parenright, dead_abovedot ] }; // i I ) dead_abovedot
+    key <AC05> { type[group1] = "FOUR_LEVEL"               , [ comma, exclam, semicolon, exclamdown ] }; // , ! ; ¡
+    key <AC06> { type[group1] = "FOUR_LEVEL_ALPHABETIC"    , [ c, C, ccedilla, Ccedilla ] }; // c C ccedilla, Ccedilla
+    key <AC07> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ t, T, less, lessthanequal ] }; // t T < ≤
+    key <AC08> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ s, S, greater, greaterthanequal ] }; // s S > ≥
+    key <AC09> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ r, R, plus, minus] }; // r R + -
+    key <AC10> { type[group1] = "FOUR_LEVEL_ALPHABETIC"    , [ n, N, ntilde, Ntilde ] }; // n N ñ Ñ
+    key <AC11> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ f, F, U2193, U2191 ] }; // f F ↓ ↑
+    key <BKSL> { type[group1] = "FOUR_LEVEL"               , [ dead_diaeresis, dead_stroke, U2192, U2190 ] }; // dead_diaeresis dead_stroke → ←
+
+    key <LSGT> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ ecircumflex, Ecircumflex, slash, U202F ] }; // ê Ê / espace fine insécable
+    key <AB01> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ agrave, Agrave, backslash, U3003] }; // à À \ 〃 
+    key <AB02> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ y, Y, braceleft, notequal ] }; // y Y { ≠
+    key <AB03> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ x, X, braceright, U2022 ] }; // x X } •
+    key <AB04> { type[group1] = "FOUR_LEVEL"               , [ period, colon, ellipsis, periodcentered ] }; // . : … ·
+    key <AB05> { type[group1] = "FOUR_LEVEL"               , [ rightsinglequotemark, question, leftsinglequotemark, questiondown ] }; // ’ ? ‘ ¿
+    key <AB06> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ k, K, asciitilde, dead_tilde ] }; // k K ~ ~
+    key <AB07> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ q, Q, bracketleft, Multi_key ] }; // q Q [ Compose
+    key <AB08> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ g, G, bracketright, mu ] }; // g G ]
+    key <AB09> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ h, H, dagger, doubledagger ] }; // h H † ‡
+    key <AB10> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [ m, M, dead_macron, dead_belowdot ] }; // m M dead_macron dead_belowdot
+
+    key <SPCE> { type[group1] = "FOUR_LEVEL"               , [ space, space, underscore, nobreakspace ] }; //     _  
+
+    // Remap mod keys
+    // Caps to Hyper
+    key <CAPS> { type[group1] = "ONE_LEVEL"                , [ Hyper_L ] };
+    // Left Control to Alt
+    key <LCTL> { type[group1] = "ONE_LEVEL"                , [ Alt_L ] };
+    // Left Windows to Alt Gr
+    key <LWIN> { type[group1] = "ONE_LEVEL"                , [ ISO_Level3_Shift ] };
+    // Left Alt to Control
+    key <LALT> { type[group1] = "ONE_LEVEL"                , [ Control_L ] };
+    key <RALT> { type[group1] = "ONE_LEVEL"                , [ ISO_Level3_Shift ] };
+    // Right Control to Menu
+    key <RCTL> { type[group1] = "ONE_LEVEL"                   , [ Super_L ] };
+    // key <RWIN> { type[group1] = "TWO_LEVEL"                , [ Menu, Super_R ] };
+    // key <MENU> { type[group1] = "TWO_LEVEL"                , [ Super_L, Menu ] };
+
+    // Edit mod map in xmodmap
+};

@@ -1,8 +1,65 @@
 #+title: Programmer-Béop
 
-* Programmer-Béop
-
 Ergonomic keyboard layout based on [[https://bepo.fr][Bépo]]. This layout focuses on seamless
 integration with english and programming.
 
 [[images/layout.png]]
+
+** Installation
+
+*** XKB Install
+
+Instalation for [[https://www.x.org/wiki/XKB/][XKB for Xorg]].
+
+Copy content of =xkb= folder in your =$HOME= directory.
+
+Run the following script for using the layout.
+
+#+begin_src bash
+#!/bin/sh
+
+setxkbmap -I $HOME/.xkb prbeop-fren -print | xkbcomp -I$HOME/.xkb - $DISPLAY 2> /dev/null
+xmodmap $HOME/.xkb/xmodmap 2> $HOME/i3-keyboard-log
+exit 0
+#+end_src
+
+*** OSX Install
+
+The =OSX= folder contains a [[https://software.sil.org/ukelele/][Ukulele]] layout and a [[https://karabiner-elements.pqrs.org/][Karabiner]] config
+
+** Rationale
+
+The bepo layout is great for french word processing and long text entry, but it
+does not correspond to all computer uses. I mostly use my keyboard for
+programming, system administration and english writing.
+
+I moved common english letters and specific keys, not often used in natural
+language (braces { and }, brackets [ and ], chevrons < and >) to more accessible
+positions.
+
+** Usage
+
+This layout makes extensive use of modifiers to access the keys often used on
+the most accessible positions.
+
+In particular,
+
+- Keys used in programming (#, $, <>, [], {}, !, ...) are more accessible
+  and pairs are grouped.
+- Facilitate rolling on common vowel groups for french (au, eu, ou, ai, ei, oi,
+  ie...).
+- Easier access to typographic characters: (‘, «, », “, ”, …, ·)
+- Some dead keys are used in programming and in language like ~ or ` and have
+  both the modifier and the standalone character.
+- Modifier for monetary symbols (¤ + l = £, ¤ + b = ₿, etc) and greek (μ + a =
+  α, μ + l = λ, …).
+
+** Modifiers
+
+The modifier set up is not included in the layout and can be software dependent
+but I try to use
+- =Ctrl= key in place of =Alt= (like in OSX) for easier shortcuts.
+- Symmetrical =AltGr= (or mod key for characters like <> and []).
+- A right modifier for window manager shortcuts (eg [[https://i3wm.org/][i3]]).
+- =Caps Lock= is remaped to a new modifier (eg =Hyper=) for custom shortcuts in
+  editors: Emacs can use four different modifiers (C, M, H, S)
