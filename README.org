@@ -1,7 +1,7 @@
 #+title: Programmer-Béop
 
 Ergonomic keyboard layout based on [[https://bepo.fr][Bépo]]. This layout focuses on seamless
-integration with english and programming.
+integration of french, english and programming.
 
 [[images/layout.png]]
 
