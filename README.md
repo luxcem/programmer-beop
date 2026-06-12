@@ -12,7 +12,8 @@ French, English, and programming.
 Bépo is excellent for long-form French text, but programming and system
 administration demand keys it places poorly: braces, brackets, chevrons.
 Programmer Béop moves those characters — and a few frequent English
-letters — to reachable positions, while staying close to bépo.
+letters — to reachable positions, while staying close to bépo. The
+layout has existed since 2014 and has been a daily driver ever since.
 
 ## Features
 

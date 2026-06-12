@@ -151,7 +151,7 @@ const I18N = {
     hint: 'Cliquez sur ⇧ Maj et Alt Gr pour révéler les couches. Survolez ou cliquez une touche. Les touches mortes (diacritiques) sont en ambre.',
     ctaTry: 'Installer la disposition', ctaGithub: 'Voir sur GitHub',
     whyKicker: 'Pourquoi', whyTitle: 'Du bépo au programmer béop.',
-    whyBody: 'Le bépo est formidable pour le texte long, mais la programmation et l’administration système réclament des touches qu’il place mal : accolades, crochets, chevrons. Le programmer béop déplace ces caractères — et quelques lettres anglaises — vers des positions accessibles, tout en restant proche du bépo.',
+    whyBody: 'Le bépo est formidable pour le texte long, mais la programmation et l’administration système réclament des touches qu’il place mal : accolades, crochets, chevrons. Le programmer béop déplace ces caractères — et quelques lettres anglaises — vers des positions accessibles, tout en restant proche du bépo. La disposition existe depuis 2014 et sert d’outil de travail quotidien depuis.',
     featKicker: 'Ce qui change', featTitle: 'Qualité de vie, touche après touche.',
     features: [
       { g: '( )', t: 'Paires sur Alt Gr', d: '( ) { } < > [ ] sur les touches fortes e i y x t s q g, regroupées par paires.' },
@@ -176,7 +176,7 @@ const I18N = {
     wayCode: 'mkdir -p ~/.config/xkb/symbols\ncp linux/symbols/prbeop-fren \\\n  ~/.config/xkb/symbols/\n# sway : xkb_layout "prbeop-fren"',
     osxHead: 'macOS', osxNote: 'La disposition s’installe avec <a href="https://software.sil.org/ukelele/" target="_blank" rel="noopener">Ukelele</a> pour les caractères (PrBeop.keylayout) et <a href="https://karabiner-elements.pqrs.org/" target="_blank" rel="noopener">Karabiner-Elements</a> pour les modificateurs — Ctrl ⇄ Alt, Caps en Hyper (karabiner.json) :',
     osxCode: 'cp macos/PrBeop.keylayout ~/Library/Keyboard\\ Layouts/\ncp macos/karabiner.json ~/.config/karabiner/\n# puis Réglages Système → Clavier → Sources de saisie',
-    footCredit: 'Basé sur le bépo · sous licence GPL-3.0 · par luxcem',
+    footCredit: 'Basé sur le bépo · depuis 2014 · sous licence GPL-3.0 · par luxcem',
     layers: { base: 'Direct', shift: 'Maj', altgr: 'Alt Gr', l4: 'Maj + Alt Gr', cat: 'Catégorie' },
     cats: { prog: 'Programmation', typo: 'Typographie', math: 'Mathématiques', dead: 'Touche morte', compose: 'Compose', punct: 'Ponctuation', letter: 'Lettre' },
     title: 'Programmer Béop — disposition de clavier ergonomique'
@@ -188,7 +188,7 @@ const I18N = {
     hint: 'Click ⇧ Shift and Alt Gr to reveal the layers. Hover or click any key. Dead keys (diacritics) are shown in amber.',
     ctaTry: 'Install the layout', ctaGithub: 'View on GitHub',
     whyKicker: 'Why', whyTitle: 'From bépo to programmer béop.',
-    whyBody: 'Bépo is wonderful for long-form text, but programming and system administration demand keys it places poorly: braces, brackets, chevrons. Programmer Béop moves those characters — and a few English letters — to reachable positions, while staying close to bépo.',
+    whyBody: 'Bépo is wonderful for long-form text, but programming and system administration demand keys it places poorly: braces, brackets, chevrons. Programmer Béop moves those characters — and a few English letters — to reachable positions, while staying close to bépo. The layout has existed since 2014 and has been a daily driver ever since.',
     featKicker: 'What changes', featTitle: 'Quality of life, key by key.',
     features: [
       { g: '( )', t: 'Pairs on Alt Gr', d: '( ) { } < > [ ] on the strong keys e i y x t s q g, grouped as pairs.' },
@@ -213,7 +213,7 @@ const I18N = {
     wayCode: 'mkdir -p ~/.config/xkb/symbols\ncp linux/symbols/prbeop-fren \\\n  ~/.config/xkb/symbols/\n# sway: xkb_layout "prbeop-fren"',
     osxHead: 'macOS', osxNote: 'The layout installs with <a href="https://software.sil.org/ukelele/" target="_blank" rel="noopener">Ukelele</a> for the characters (PrBeop.keylayout) and <a href="https://karabiner-elements.pqrs.org/" target="_blank" rel="noopener">Karabiner-Elements</a> for the modifiers — Ctrl ⇄ Alt, Caps as Hyper (karabiner.json):',
     osxCode: 'cp macos/PrBeop.keylayout ~/Library/Keyboard\\ Layouts/\ncp macos/karabiner.json ~/.config/karabiner/\n# then System Settings → Keyboard → Input Sources',
-    footCredit: 'Based on bépo · GPL-3.0 licensed · by luxcem',
+    footCredit: 'Based on bépo · since 2014 · GPL-3.0 licensed · by luxcem',
     layers: { base: 'Direct', shift: 'Shift', altgr: 'Alt Gr', l4: 'Shift + Alt Gr', cat: 'Category' },
     cats: { prog: 'Programming', typo: 'Typography', math: 'Math', dead: 'Dead key', compose: 'Compose', punct: 'Punctuation', letter: 'Letter' },
     title: 'Programmer Béop — ergonomic keyboard layout'
