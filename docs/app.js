@@ -174,8 +174,8 @@ const I18N = {
     xkbCode: 'setxkbmap -I $HOME/.xkb prbeop-fren -print \\\n  | xkbcomp -I$HOME/.xkb - $DISPLAY 2>/dev/null',
     wayHead: 'Linux · Wayland', wayNote: 'libxkbcommon lit les dispositions depuis ~/.config/xkb (sway, Hyprland, river…) :',
     wayCode: 'mkdir -p ~/.config/xkb/symbols\ncp linux/symbols/prbeop-fren \\\n  ~/.config/xkb/symbols/\n# sway : xkb_layout "prbeop-fren"',
-    osxHead: 'macOS', osxNote: 'Le dossier macos fournit une disposition prête à l’emploi :',
-    osxCode: '# Ukelele → PrBeop.keylayout\n# Karabiner-Elements → modificateurs\n#   (Ctrl ⇄ Alt, Caps → Hyper)',
+    osxHead: 'macOS', osxNote: 'La disposition s’installe avec <a href="https://software.sil.org/ukelele/" target="_blank" rel="noopener">Ukelele</a> pour les caractères (PrBeop.keylayout) et <a href="https://karabiner-elements.pqrs.org/" target="_blank" rel="noopener">Karabiner-Elements</a> pour les modificateurs — Ctrl ⇄ Alt, Caps en Hyper (karabiner.json) :',
+    osxCode: 'cp macos/PrBeop.keylayout ~/Library/Keyboard\\ Layouts/\ncp macos/karabiner.json ~/.config/karabiner/\n# puis Réglages Système → Clavier → Sources de saisie',
     footCredit: 'Basé sur le bépo · sous licence GPL-3.0 · par luxcem',
     layers: { base: 'Direct', shift: 'Maj', altgr: 'Alt Gr', l4: 'Maj + Alt Gr', cat: 'Catégorie' },
     cats: { prog: 'Programmation', typo: 'Typographie', math: 'Mathématiques', dead: 'Touche morte', compose: 'Compose', punct: 'Ponctuation', letter: 'Lettre' },
@@ -211,8 +211,8 @@ const I18N = {
     xkbCode: 'setxkbmap -I $HOME/.xkb prbeop-fren -print \\\n  | xkbcomp -I$HOME/.xkb - $DISPLAY 2>/dev/null',
     wayHead: 'Linux · Wayland', wayNote: 'libxkbcommon picks up layouts from ~/.config/xkb (sway, Hyprland, river…):',
     wayCode: 'mkdir -p ~/.config/xkb/symbols\ncp linux/symbols/prbeop-fren \\\n  ~/.config/xkb/symbols/\n# sway: xkb_layout "prbeop-fren"',
-    osxHead: 'macOS', osxNote: 'The macos folder ships a ready-to-use setup:',
-    osxCode: '# Ukelele → PrBeop.keylayout\n# Karabiner-Elements → modifiers\n#   (Ctrl ⇄ Alt, Caps → Hyper)',
+    osxHead: 'macOS', osxNote: 'The layout installs with <a href="https://software.sil.org/ukelele/" target="_blank" rel="noopener">Ukelele</a> for the characters (PrBeop.keylayout) and <a href="https://karabiner-elements.pqrs.org/" target="_blank" rel="noopener">Karabiner-Elements</a> for the modifiers — Ctrl ⇄ Alt, Caps as Hyper (karabiner.json):',
+    osxCode: 'cp macos/PrBeop.keylayout ~/Library/Keyboard\\ Layouts/\ncp macos/karabiner.json ~/.config/karabiner/\n# then System Settings → Keyboard → Input Sources',
     footCredit: 'Based on bépo · GPL-3.0 licensed · by luxcem',
     layers: { base: 'Direct', shift: 'Shift', altgr: 'Alt Gr', l4: 'Shift + Alt Gr', cat: 'Category' },
     cats: { prog: 'Programming', typo: 'Typography', math: 'Math', dead: 'Dead key', compose: 'Compose', punct: 'Punctuation', letter: 'Letter' },
@@ -368,9 +368,12 @@ function renderI18n() {
   const t = I18N[state.lang];
   document.documentElement.lang = state.lang;
   document.title = t.title;
+  const htmlKeys = ['osxNote']; // trusted strings carrying <a> markup
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const v = t[el.dataset.i18n];
-    if (typeof v === 'string') el.textContent = v;
+    if (typeof v !== 'string') return;
+    if (htmlKeys.indexOf(el.dataset.i18n) !== -1) el.innerHTML = v;
+    else el.textContent = v;
   });
 
   const featGrid = document.getElementById('feat-grid');
