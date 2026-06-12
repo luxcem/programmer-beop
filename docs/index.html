@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr" data-mode="light">
+<head>
+<meta charset="utf-8">
+<script>
+(function () {
+  var m = null;
+  try { m = localStorage.getItem('prbeop.mode'); } catch (e) {}
+  if (m !== 'light' && m !== 'dark') {
+    m = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  document.documentElement.dataset.mode = m;
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Programmer Béop — disposition de clavier ergonomique</title>
+<meta name="description" content="Disposition de clavier ergonomique basée sur le bépo, pensée pour le français, l'anglais et la programmation.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://iosevka-webfonts.github.io/iosevka-etoile/iosevka-etoile.css" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  ::selection { background: rgba(136,192,208,0.30); }
+  @keyframes pbFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  :root {
+    --font: "Iosevka Etoile Web", "JetBrains Mono", ui-monospace, monospace;
+    --font-display: "Iosevka Etoile Web", Georgia, serif;
+  }
+  html[data-mode="dark"] {
+    --page: #2E3440; --text: #ECEFF4; --muted: #8B95A8;
+    --line: rgba(216,222,233,0.12);
+    --panel: #3B4252; --panel-line: rgba(216,222,233,0.08);
+    --board-bg: #272D38; --key-bg: #3B4252; --key-text: #ECEFF4; --key-line: #4C566A;
+    --key-shadow: 0 2px 0 rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03);
+    --mod-bg: #343B49; --mod-text: #D8DEE9;
+    --accent: #88C0D0; --accent-text: #2E3440;
+    --alt: #2B313D; --code-bg: #21262F;
+    --dead: #EBCB8B;
+    --bar-bg: rgba(46,52,64,0.82);
+  }
+  html[data-mode="light"] {
+    --page: #ECEFF4; --text: #2E3440; --muted: #4C566A;
+    --line: rgba(46,52,64,0.13);
+    --panel: #E5E9F0; --panel-line: rgba(46,52,64,0.10);
+    --board-bg: #E1E7F0; --key-bg: #FFFFFF; --key-text: #2E3440; --key-line: rgba(46,52,64,0.16);
+    --key-shadow: 0 2px 0 rgba(46,52,64,0.10), 0 6px 14px rgba(46,52,64,0.05);
+    --mod-bg: #D8DEE9; --mod-text: #4C566A;
+    --accent: #5E81AC; --accent-text: #ECEFF4;
+    --alt: #E5E9F0; --code-bg: #E3E8F1;
+    --dead: #A87614;
+    --bar-bg: rgba(236,239,244,0.82);
+  }
+
+  body {
+    min-height: 100vh; background: var(--page); color: var(--text);
+    font-family: var(--font); transition: background .25s, color .25s;
+  }
+  h1, h2, .brand, .sub, .body-text,
+  .feat-row .title, .feat-row .desc, .corpus .desc,
+  .install-note, .foot-brand {
+    font-family: var(--font-display);
+  }
+
+  .bar {
+    position: sticky; top: 0; z-index: 20; display: flex; align-items: center;
+    justify-content: space-between; padding: 14px 28px; background: var(--bar-bg);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+  }
+  .brand-wrap { display: flex; align-items: center; gap: 10px; }
+  .brand-mark {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--accent); color: var(--accent-text); font-size: 16px;
+  }
+  .brand { font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
+  .bar-right { display: flex; align-items: center; gap: 12px; }
+  .toggle-group {
+    display: flex; gap: 2px; padding: 3px; border-radius: 9px;
+    background: var(--panel); border: 1px solid var(--line);
+  }
+  .toggle-group button {
+    appearance: none; border: 1px solid transparent; background: transparent;
+    color: var(--muted); font-family: var(--font); font-size: 13px; font-weight: 600;
+    line-height: 1; padding: 7px 12px; border-radius: 7px; cursor: pointer; transition: all .15s;
+  }
+  .toggle-group button.active { background: var(--accent); color: var(--accent-text); }
+
+  .hero { padding: 64px 40px 76px; background: var(--page); border-bottom: 1px solid var(--line); }
+  .hero-inner { max-width: 1180px; margin: 0 auto 46px; text-align: center; animation: pbFade .5s ease both; }
+  .kicker {
+    font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 18px;
+  }
+  .hero-inner .kicker { margin-bottom: 22px; }
+  h1 {
+    font-weight: 700; font-size: clamp(34px, 5.4vw, 62px); line-height: 1.05;
+    letter-spacing: -0.03em; margin: 0 auto 22px; max-width: 920px;
+  }
+  .sub {
+    font-size: clamp(17px, 2vw, 21px); line-height: 1.6; color: var(--muted);
+    max-width: 920px; margin: 0 auto 30px; text-wrap: pretty;
+  }
+  .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .cta-primary {
+    display: inline-flex; align-items: center; text-decoration: none;
+    font-size: 16px; font-weight: 600; padding: 13px 22px; border-radius: 10px;
+    background: var(--accent); color: var(--accent-text); border: 1px solid transparent;
+  }
+  .cta-secondary {
+    display: inline-flex; align-items: center; text-decoration: none;
+    font-size: 16px; padding: 13px 20px; border-radius: 10px;
+    background: transparent; color: var(--text); border: 1px solid var(--line);
+  }
+
+  .board-outer {
+    max-width: 1180px; margin: 0 auto; padding: 26px 26px 22px; border-radius: 20px;
+    background: var(--board-bg); border: 1px solid var(--line); animation: pbFade .6s ease both;
+  }
+  .hint {
+    font-size: 14px; letter-spacing: 0.04em; color: var(--muted);
+    text-align: center; margin-bottom: 20px;
+  }
+  .board-wrap { width: 100%; overflow: hidden; display: flex; justify-content: center; }
+  .board {
+    width: 980px; transform-origin: top center; display: flex;
+    flex-direction: column; gap: 8px; flex: 0 0 auto;
+  }
+  .krow { display: flex; gap: 8px; }
+  .key {
+    position: relative; height: 60px; flex: 0 0 auto; border-radius: 9px;
+    background: var(--key-bg); border: 1px solid var(--key-line); box-shadow: var(--key-shadow);
+    cursor: pointer; user-select: none;
+    transition: background .15s, border-color .15s, transform .08s;
+  }
+  .key.hover { transform: translateY(-2px); }
+  .key span { position: absolute; line-height: 1; pointer-events: none; transition: color .12s, opacity .12s; font-weight: 500; }
+  .key .g-c  { bottom: 7px; left: 8px; font-size: 19px; color: var(--key-text); opacity: 0.32; }
+  .key .g-tl { top: 7px; left: 8px; font-size: 12px; color: var(--muted); opacity: 0.55; }
+  .key .g-br { bottom: 7px; right: 8px; font-size: 14px; color: var(--muted); opacity: 0.5; }
+  .key .g-tr { top: 7px; right: 8px; font-size: 11px; color: var(--muted); opacity: 0.4; }
+  /* The active layer's glyph takes the prominence of a normal letter */
+  .key .emph { font-weight: 700; opacity: 1; font-size: 21px; color: var(--key-text); }
+  /* Dead keys (diacritics, compose) keep a distinct color, active or not */
+  .key .dk { color: var(--dead); }
+  .mod {
+    height: 60px; flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
+    border-radius: 9px; font-size: 14px; letter-spacing: 0.04em;
+    color: var(--mod-text); background: var(--mod-bg); border: 1px solid var(--key-line);
+    box-shadow: var(--key-shadow); cursor: default; user-select: none;
+    transition: background .15s, color .15s, transform .08s;
+  }
+  .mod.clickable { cursor: pointer; align-items: flex-end; padding-bottom: 8px; }
+  .mod.on {
+    color: var(--accent-text); background: var(--accent);
+    border-color: transparent; transform: translateY(1px);
+  }
+
+  .readout {
+    margin-top: 18px; min-height: 58px; display: flex; align-items: center; gap: 26px;
+    padding: 12px 18px; border-radius: 12px; background: var(--panel);
+    border: 1px solid var(--panel-line); flex-wrap: wrap;
+  }
+  .chip { display: flex; flex-direction: column; gap: 4px; min-width: 64px; }
+  .chip .l { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .chip .v { font-size: 22px; color: var(--key-text); height: 26px; line-height: 26px; overflow: visible; }
+  .chip .v.on { color: var(--accent); }
+  .readout .spacer { flex: 1; }
+  .readout .note { width: 100%; min-height: 18px; font-size: 16px; line-height: 1.45; color: var(--muted); }
+  .readout .cat { display: flex; align-items: center; gap: 8px; }
+  .readout .cat .dot { width: 9px; height: 9px; border-radius: 9px; background: var(--muted); }
+  .readout .cat .cl { font-size: 13px; color: var(--muted); }
+
+  section.std { padding: 92px 40px; background: var(--page); border-bottom: 1px solid var(--line); }
+  section.alt { padding: 92px 40px; background: var(--alt); border-bottom: 1px solid var(--line); }
+  .inner { max-width: 980px; margin: 0 auto; }
+  h2 {
+    font-weight: 600; font-size: 40px; line-height: 1.08;
+    letter-spacing: -0.02em; margin: 0 0 22px;
+  }
+  .body-text { font-size: 18px; line-height: 1.65; color: var(--muted); margin: 0; text-wrap: pretty; }
+
+  .feat-list { margin-top: 38px; display: flex; flex-direction: column; }
+  .feat-row { display: flex; gap: 28px; padding: 26px 0; border-bottom: 1px solid var(--line); align-items: flex-start; }
+  .feat-row:last-child { border-bottom: none; }
+  .feat-row .glyph { font-family: var(--font); font-size: 26px; line-height: 1.2; color: var(--accent); min-width: 86px; }
+  .feat-row .title { font-weight: 600; font-size: 20px; margin-bottom: 8px; }
+  .feat-row .desc { font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 680px; text-wrap: pretty; }
+  .card { padding: 24px 22px; border-radius: 14px; background: var(--panel); border: 1px solid var(--panel-line); }
+
+  .corpora-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 36px 0 26px; }
+  @media (max-width: 560px) { .corpora-grid { grid-template-columns: 1fr; } }
+  .corpus { display: flex; flex-direction: column; gap: 10px; }
+  .corpus .tag {
+    align-self: flex-start; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); padding: 4px 9px; border-radius: 6px; border: 1px solid var(--line);
+  }
+  .corpus .title { font-size: 19px; }
+  .corpus .desc { font-size: 16px; color: var(--muted); }
+  .corpus .scores { margin-top: 6px; display: flex; flex-direction: column; gap: 4px; }
+  .corpus .score-row { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); }
+  .corpus .score-row.me { color: var(--text); font-weight: 700; }
+  .corpus .score-link { margin-top: 4px; font-size: 12.5px; color: var(--accent); text-decoration: none; align-self: flex-start; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+
+  .install-list { margin-top: 38px; display: flex; flex-direction: column; }
+  .install-row { display: flex; gap: 28px; padding: 26px 0; border-bottom: 1px solid var(--line); align-items: flex-start; }
+  .install-row:last-child { border-bottom: none; }
+  .install-head { min-width: 160px; padding-top: 4px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+  .install-body { flex: 1; min-width: 0; }
+  .install-note { font-size: 15px; line-height: 1.55; color: var(--muted); margin: 0 0 14px; }
+  @media (max-width: 640px) { .install-row { flex-direction: column; gap: 10px; } }
+  pre.code {
+    font-family: var(--font); font-size: 13px; line-height: 1.6; color: var(--text);
+    background: var(--code-bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 16px 18px; overflow-x: auto; margin: 0; white-space: pre;
+  }
+
+  footer { padding: 46px 40px; background: var(--page); }
+  .foot-inner {
+    max-width: 980px; margin: 0 auto; display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 18px;
+  }
+  .foot-brand { font-weight: 600; font-size: 17px; margin-bottom: 6px; }
+  .foot-muted { font-size: 12.5px; color: var(--muted); }
+  .foot-links { display: flex; gap: 22px; }
+  .foot-links a {
+    font-size: 13.5px; color: var(--muted); text-decoration: none;
+    border-bottom: 1px solid var(--line); padding-bottom: 2px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="bar">
+    <div class="brand-wrap">
+      <span class="brand-mark">⎄</span>
+      <span class="brand">Programmer&nbsp;Béop</span>
+    </div>
+    <div class="bar-right">
+      <div class="toggle-group">
+        <button id="btn-dark" title="Sombre · Dark">☾</button>
+        <button id="btn-light" title="Clair · Light">☀</button>
+      </div>
+      <div class="toggle-group">
+        <button id="btn-fr">FR</button>
+        <button id="btn-en">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="kicker" data-i18n="heroKicker"></div>
+      <h1 data-i18n="heroTitle"></h1>
+      <p class="sub" data-i18n="heroSub"></p>
+      <div class="cta-row">
+        <a href="#install" class="cta-primary" data-i18n="ctaTry"></a>
+        <a href="https://github.com/luxcem/programmer-beop" target="_blank" rel="noopener" class="cta-secondary"><span data-i18n="ctaGithub"></span>&nbsp;↗</a>
+      </div>
+    </div>
+
+    <div class="board-outer">
+      <div class="hint" data-i18n="hint"></div>
+      <div class="board-wrap" id="board-wrap">
+        <div class="board" id="board"></div>
+      </div>
+      <div class="readout" id="readout"></div>
+    </div>
+  </section>
+
+  <section class="std">
+    <div class="inner">
+      <div class="kicker" data-i18n="whyKicker"></div>
+      <h2 data-i18n="whyTitle"></h2>
+      <p class="body-text" data-i18n="whyBody"></p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="inner">
+      <div class="kicker" data-i18n="featKicker"></div>
+      <h2 data-i18n="featTitle"></h2>
+      <div class="feat-list" id="feat-grid"></div>
+    </div>
+  </section>
+
+  <section class="std">
+    <div class="inner">
+      <div class="kicker" data-i18n="compKicker"></div>
+      <h2 data-i18n="compTitle"></h2>
+      <p class="body-text" data-i18n="compBody"></p>
+      <div class="corpora-grid" id="corpora-grid"></div>
+    </div>
+  </section>
+
+  <section id="install" class="alt">
+    <div class="inner">
+      <div class="kicker" data-i18n="installKicker"></div>
+      <h2 data-i18n="installTitle"></h2>
+      <div class="install-list">
+        <div class="install-row">
+          <div class="install-head" data-i18n="xkbHead"></div>
+          <div class="install-body">
+            <p class="install-note" data-i18n="xkbNote"></p>
+            <pre class="code" data-i18n="xkbCode"></pre>
+          </div>
+        </div>
+        <div class="install-row">
+          <div class="install-head" data-i18n="wayHead"></div>
+          <div class="install-body">
+            <p class="install-note" data-i18n="wayNote"></p>
+            <pre class="code" data-i18n="wayCode"></pre>
+          </div>
+        </div>
+        <div class="install-row">
+          <div class="install-head" data-i18n="osxHead"></div>
+          <div class="install-body">
+            <p class="install-note" data-i18n="osxNote"></p>
+            <pre class="code" data-i18n="osxCode"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-inner">
+      <div>
+        <div class="foot-brand">Programmer&nbsp;Béop</div>
+        <div class="foot-muted" data-i18n="footCredit"></div>
+      </div>
+      <div class="foot-links">
+        <a href="https://github.com/luxcem/programmer-beop" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://bepo.fr" target="_blank" rel="noopener">bépo.fr</a>
+        <a href="https://linuxfr.org/users/luxcem/journaux/programmer-beop" target="_blank" rel="noopener">LinuxFr</a>
+      </div>
+    </div>
+  </footer>
+
+<script src="app.js"></script>
+</body>
+</html>

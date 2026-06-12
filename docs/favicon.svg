@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect x="2" y="2" width="28" height="28" rx="7" fill="#5E81AC"/>
+  <text x="16" y="17" text-anchor="middle" dominant-baseline="central"
+        font-family="'Iosevka Term Web', 'JetBrains Mono', ui-monospace, monospace"
+        font-size="21" fill="#ECEFF4">&#x2384;</text>
+</svg>
