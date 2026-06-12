@@ -169,7 +169,7 @@ const I18N = {
       { k: 'Python', t: 'runserver.py', d: 'Code — framework Django', res: 'django' },
       { k: 'TypeScript', t: 'pack-next.ts', d: 'Code — framework Next.js', res: 'nextjs' }
     ],
-    installKicker: 'Installation', installTitle: 'Linux et macOS, à vous de jouer.',
+    installKicker: 'Installation', installTitle: 'X11, Wayland, macOS.',
     xkbHead: 'Linux · X11', xkbNote: 'Copiez (ou liez) le dossier linux vers ~/.xkb, puis :',
     xkbCode: 'setxkbmap -I $HOME/.xkb prbeop-fren -print \\\n  | xkbcomp -I$HOME/.xkb - $DISPLAY 2>/dev/null',
     wayHead: 'Linux · Wayland', wayNote: 'libxkbcommon lit les dispositions depuis ~/.config/xkb (sway, Hyprland, river…) :',
@@ -206,7 +206,7 @@ const I18N = {
       { k: 'Python', t: 'runserver.py', d: 'Code — Django framework', res: 'django' },
       { k: 'TypeScript', t: 'pack-next.ts', d: 'Code — Next.js framework', res: 'nextjs' }
     ],
-    installKicker: 'Installation', installTitle: 'Linux and macOS, ready to go.',
+    installKicker: 'Installation', installTitle: 'X11, Wayland, macOS.',
     xkbHead: 'Linux · X11', xkbNote: 'Copy (or symlink) the linux folder to ~/.xkb, then:',
     xkbCode: 'setxkbmap -I $HOME/.xkb prbeop-fren -print \\\n  | xkbcomp -I$HOME/.xkb - $DISPLAY 2>/dev/null',
     wayHead: 'Linux · Wayland', wayNote: 'libxkbcommon picks up layouts from ~/.config/xkb (sway, Hyprland, river…):',
