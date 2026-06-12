@@ -146,7 +146,7 @@ const KLA_RESULTS = {
 const I18N = {
   fr: {
     heroKicker: 'Disposition de clavier ergonomique · basée sur le bépo',
-    heroTitle: 'Pensé pour le français, l’anglais et le code.',
+    heroTitle: 'Pensée pour le français, l’anglais et le code.',
     heroSub: 'Une disposition ergonomique dérivée du bépo : accents et typographie française en accès direct, symboles de programmation regroupés par paires sous Alt Gr, lettres fréquentes de l’anglais replacées.',
     hint: 'Cliquez sur ⇧ Maj et Alt Gr pour révéler les couches. Survolez ou cliquez une touche. Les touches mortes (diacritiques) sont en ambre.',
     ctaTry: 'Installer la disposition', ctaGithub: 'Voir sur GitHub',
