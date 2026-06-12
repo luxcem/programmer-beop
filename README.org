@@ -7,25 +7,56 @@ integration of french, english and programming.
 
 ** Installation
 
-*** XKB Install
+*** Linux (X11)
 
-Instalation for [[https://www.x.org/wiki/XKB/][XKB for Xorg]].
+Installation for [[https://www.x.org/wiki/XKB/][XKB for Xorg]].
 
-Copy content of =xkb= folder in your =$HOME= directory.
-
-Run the following script for using the layout.
+Copy (or symlink) the =linux= folder to =~/.xkb= and =linux/XCompose= to
+=~/.XCompose=, then load the layout:
 
 #+begin_src bash
-#!/bin/sh
-
 setxkbmap -I $HOME/.xkb prbeop-fren -print | xkbcomp -I$HOME/.xkb - $DISPLAY 2> /dev/null
-xmodmap $HOME/.xkb/xmodmap 2> $HOME/i3-keyboard-log
-exit 0
 #+end_src
 
-*** OSX Install
+Add this command to your X session startup (=~/.xinitrc=, i3 config, ...) to
+make the layout persistent.
 
-The =OSX= folder contains a [[https://software.sil.org/ukelele/][Ukulele]] layout and a [[https://karabiner-elements.pqrs.org/][Karabiner]] config
+*** Linux (Wayland)
+
+Wayland compositors load XKB layouts through libxkbcommon, which picks up
+custom layouts from =~/.config/xkb=:
+
+#+begin_src bash
+mkdir -p ~/.config/xkb/symbols
+cp linux/symbols/prbeop-fren ~/.config/xkb/symbols/
+cp linux/XCompose ~/.XCompose
+#+end_src
+
+Then select the layout in your compositor, for example in sway:
+
+#+begin_src
+input type:keyboard {
+    xkb_layout "prbeop-fren"
+}
+#+end_src
+
+This works on wlroots compositors (sway, Hyprland, river, ...). GNOME and KDE
+do not read =~/.config/xkb=; for those, copy =linux/symbols/prbeop-fren= to
+=/usr/share/X11/xkb/symbols/= and register it in the rules files.
+
+The modifier remapping (Caps as Hyper, swapped Ctrl/Alt, AltGr on both Win
+left and Alt right) is fully defined in the symbols file and works identically
+on X11 and Wayland.
+
+*** macOS
+
+The =macos= folder contains a [[https://software.sil.org/ukelele/][Ukelele]] layout (=PrBeop.keylayout=) and a
+[[https://karabiner-elements.pqrs.org/][Karabiner]] config for the modifier remapping.
+
+** Tools
+
+The =tools= folder contains a [[https://klavaro.sourceforge.io/][Klavaro]] layout file for typing practice and a
+configuration for the [[https://patorjk.com/keyboard-layout-analyzer/][Keyboard Layout Analyzer]].
 
 ** Rationale
 

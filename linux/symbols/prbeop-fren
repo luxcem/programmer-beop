@@ -77,10 +77,10 @@ xkb_symbols "prbeop-fren" {
     // Left Alt to Control
     key <LALT> { type[group1] = "ONE_LEVEL"                , [ Control_L ] };
     key <RALT> { type[group1] = "ONE_LEVEL"                , [ ISO_Level3_Shift ] };
-    // Right Control to Menu
-    key <RCTL> { type[group1] = "ONE_LEVEL"                   , [ Super_L ] };
-    // key <RWIN> { type[group1] = "TWO_LEVEL"                , [ Menu, Super_R ] };
-    // key <MENU> { type[group1] = "TWO_LEVEL"                , [ Super_L, Menu ] };
+    key <RCTL> { type[group1] = "ONE_LEVEL"                , [ Control_R ] };
+    // Menu to Hyper (Right Windows stays Super for the window manager)
+    key <MENU> { type[group1] = "ONE_LEVEL"                , [ Hyper_R ] };
 
-    // Edit mod map in xmodmap
+    // Hyper on its own modifier, separate from Super (mod4)
+    modifier_map Mod3 { Hyper_L, Hyper_R };
 };
